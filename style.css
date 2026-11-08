@@ -195,3 +195,46 @@ footer {
 footer a {
   color: var(--alerta);
 }
+
+/* INTRODUÇÃO */
+.intro {
+  border-left-color: var(--alerta);
+}
+
+.intro p {
+  margin: 0 0 1rem;
+}
+
+.link-materia {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  border: 2px solid var(--alerta);
+  border-radius: 6px;
+  color: var(--alerta);
+  font-family: "Courier New", ui-monospace, monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.link-materia::after {
+  content: " ↗";
+}
+
+.link-materia:hover,
+.link-materia:focus-visible {
+  background: var(--alerta);
+  color: var(--selva-900);
+}
+
+/* LISTA DE FONTES */
+footer ul {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0 1rem;
+}
+
+footer li {
+  margin-bottom: 0.4rem;
+}
