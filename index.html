@@ -1,67 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<header>
-  <span class="selo">72H</span>
-  <h1>Kit de Emergência</h1>
-  <p>Checklist para preparar suprimentos para até 3 dias.</p>
-  <p class="aviso">Site independente, não oficial. Consulte sempre a Defesa Civil.</p>
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-</header>
-
-<section class="intro">
-  <p>
-    Em 6 de novembro, a Defesa Civil Nacional divulgou nas redes sociais uma
-    orientação para que as famílias mantenham em casa um kit de emergência
-    com suprimentos para até 72 horas (3 dias). O órgão descreve a medida
-    como preventiva. Este site é um checklist independente para ajudar você
-    a montar o seu kit.
-  </p>
-  <a class="link-materia" href="https://www.correiobraziliense.com.br/brasil/2026/11/7534982-defesa-civil-explica-recomendacao-de-kit-de-emergencia-para-72-horas.html"
-     target="_blank" rel="noopener noreferrer">
-    Leia a matéria completa no Correio Braziliense
-  </a>
-</section>
+  <meta name="description" content="Checklist interativo para preparar um kit de emergência para 72 horas (3 dias), com calculadora de água por pessoa.">
+  <meta name="theme-color" content="#102418">
+  <title>Kit de Emergência 72h – Checklist</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
   <header>
-    <h1>Kit de Emergência 72h</h1>
+    <span class="selo">72H</span>
+    <h1>Kit de Emergência</h1>
     <p>Checklist para preparar suprimentos para até 3 dias.</p>
     <p class="aviso">Site independente, não oficial. Consulte sempre a Defesa Civil.</p>
   </header>
 
-  <div class="progresso">
-  <p id="progresso-texto" aria-live="polite"></p>
-  <progress id="progresso-barra" value="0" max="1"></progress>
-</div>
+  <section class="intro">
+    <p>
+      Em 6 de novembro, a Defesa Civil Nacional divulgou nas redes sociais uma
+      orientação para que as famílias mantenham em casa um kit de emergência
+      com suprimentos para até 72 horas (3 dias). O órgão descreve a medida
+      como preventiva. Este site é um checklist independente para ajudar você
+      a montar o seu kit.
+    </p>
+    <a class="link-materia" href="https://www.correiobraziliense.com.br/brasil/2026/11/7534982-defesa-civil-explica-recomendacao-de-kit-de-emergencia-para-72-horas.html"
+       target="_blank" rel="noopener noreferrer">
+      Leia a matéria completa no Correio Braziliense
+    </a>
+  </section>
 
-<label class="pessoas">
-  Pessoas na casa
-  <input type="number" id="pessoas-input" min="1" max="20" value="1" inputmode="numeric">
-</label>
+  <div class="progresso">
+    <p id="progresso-texto" aria-live="polite"></p>
+    <progress id="progresso-barra" value="0" max="1"></progress>
+  </div>
+
+  <label class="pessoas">
+    Pessoas na casa
+    <input type="number" id="pessoas-input" min="1" max="20" value="1" inputmode="numeric">
+  </label>
 
   <main id="checklist"></main>
 
   <footer>
-  <h2>Fontes</h2>
-  <ul>
-    <li>
-      <a href="https://www.instagram.com/defesacivilbra/" target="_blank" rel="noopener noreferrer">
-        Perfil da Defesa Civil Nacional no Instagram (@defesacivilbra)
-      </a>
-    </li>
-    <li>
-      <a href="https://www.correiobraziliense.com.br/brasil/2026/11/7534982-defesa-civil-explica-recomendacao-de-kit-de-emergencia-para-72-horas.html" target="_blank" rel="noopener noreferrer">
-        Defesa Civil explica recomendação de kit de emergência para 72 horas (Correio Braziliense)
-      </a>
-    </li>
-  </ul>
-  <p>
-    A quantidade de água (2 litros por pessoa por dia) segue a recomendação da
-    Defesa Civil Nacional, conforme divulgada pela imprensa. Acompanhe também os
-    alertas e orientações da Defesa Civil do seu município ou estado.
-  </p>
-</footer>
+    <h2>Fontes</h2>
+    <ul>
+      <li>
+        <a href="https://www.instagram.com/defesacivilbra/" target="_blank" rel="noopener noreferrer">
+          Perfil da Defesa Civil Nacional no Instagram (@defesacivilbra)
+        </a>
+      </li>
+      <li>
+        <a href="https://www.correiobraziliense.com.br/brasil/2026/11/7534982-defesa-civil-explica-recomendacao-de-kit-de-emergencia-para-72-horas.html" target="_blank" rel="noopener noreferrer">
+          Defesa Civil explica recomendação de kit de emergência para 72 horas (Correio Braziliense)
+        </a>
+      </li>
+    </ul>
+    <p>
+      A quantidade de água (2 litros por pessoa por dia) segue a recomendação da
+      Defesa Civil Nacional, conforme divulgada pela imprensa. Acompanhe também os
+      alertas e orientações da Defesa Civil do seu município ou estado.
+    </p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
