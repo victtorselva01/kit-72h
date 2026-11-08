@@ -1,4 +1,7 @@
-// 1. DADOS: agora cada item tem um id fixo
+// ============================================
+// 1. DADOS
+// Cada item tem um id fixo (nunca mude um id depois de publicar)
+// ============================================
 const categorias = [
   {
     nome: "Água e alimentos",
@@ -34,7 +37,14 @@ const categorias = [
   }
 ];
 
-// 2. ARMAZENAMENTO
+// Lista "achatada" com todos os itens, sem separar por categoria
+const todosOsItens = categorias.flatMap(function (categoria) {
+  return categoria.itens;
+});
+
+// ============================================
+// 2. ARMAZENAMENTO (localStorage)
+// ============================================
 const CHAVE = "kit72h-progresso";
 
 function carregarProgresso() {
@@ -53,7 +63,31 @@ function salvarProgresso(progresso) {
   }
 }
 
-// 3. RENDERIZAÇÃO
+// ============================================
+// 3. PROGRESSO
+// O total de itens marcados é calculado a partir do estado,
+// nunca guardado separadamente
+// ============================================
+function atualizarProgresso(progresso) {
+  const texto = document.getElementById("progresso-texto");
+  const barra = document.getElementById("progresso-barra");
+
+  const total = todosOsItens.length;
+  const feitos = todosOsItens.filter(function (item) {
+    return progresso[item.id];
+  }).length;
+
+  barra.max = total;
+  barra.value = feitos;
+
+  texto.textContent = feitos === total
+    ? "Kit completo! Lembre-se de revisar as validades de tempos em tempos."
+    : feitos + " de " + total + " itens";
+}
+
+// ============================================
+// 4. RENDERIZAÇÃO
+// ============================================
 function renderizar() {
   const container = document.getElementById("checklist");
   const progresso = carregarProgresso();
@@ -75,6 +109,7 @@ function renderizar() {
       caixa.addEventListener("change", function () {
         progresso[item.id] = caixa.checked;
         salvarProgresso(progresso);
+        atualizarProgresso(progresso);
       });
 
       rotulo.appendChild(caixa);
@@ -84,6 +119,8 @@ function renderizar() {
 
     container.appendChild(secao);
   });
+
+  atualizarProgresso(progresso); // mostra o valor certo ao abrir a página
 }
 
 renderizar();
