@@ -271,3 +271,76 @@ footer li {
   border-left: 3px solid var(--alerta);
   padding-left: 0.6rem;
 }
+
+/* ===== AJUSTES PARA CELULAR ===== */
+
+:root {
+  --texto-suave: #c5d6b8;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-wrap: break-word;
+}
+
+/* Título que se adapta à largura da tela */
+h1 {
+  font-size: clamp(1.4rem, 6vw, 2rem);
+}
+
+/* Contraste melhor nos textos pequenos */
+#progresso-texto,
+.pessoas {
+  color: var(--texto-suave);
+}
+
+/* iOS exige isso para aplicar o estilo da barra */
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Áreas de toque maiores (o recomendado é cerca de 44px) */
+label {
+  padding: 0.75rem 0.5rem;
+}
+
+input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;   /* não deixa o checkbox ser espremido por textos longos */
+}
+
+.ideias summary {
+  padding: 0.75rem 0;
+}
+
+/* Hover só em dispositivos que têm mouse */
+label:hover {
+  background: transparent;
+}
+
+@media (hover: hover) {
+  label:hover {
+    background: rgba(127, 156, 99, 0.12);
+  }
+}
+
+/* Telas pequenas */
+@media (max-width: 480px) {
+  body {
+    padding: 0.75rem;
+  }
+
+  section {
+    padding: 0.75rem;
+  }
+
+  .link-materia {
+    display: block;
+    text-align: center;
+  }
+}
