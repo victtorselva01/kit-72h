@@ -1,3 +1,25 @@
+Claude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Style · CSS
 /* ============================================
    1. PALETA E VARIÁVEIS
    O laranja (--alerta) fica reservado para ações e
@@ -5,7 +27,7 @@
    ============================================ */
 :root {
   color-scheme: dark;
-
+ 
   --selva-900: #0f2217;   /* fundo da página */
   --selva-800: #1b3a28;   /* fundo dos cartões */
   --selva-600: #3a6b4a;   /* bordas */
@@ -17,14 +39,14 @@
   --raio: 10px;
   --fonte-destaque: "Courier New", ui-monospace, monospace;
 }
-
+ 
 /* ============================================
    2. BASE
    ============================================ */
 html {
   -webkit-text-size-adjust: 100%;
 }
-
+ 
 body {
   font-family: system-ui, sans-serif;
   max-width: 640px;
@@ -40,19 +62,19 @@ body {
   background-attachment: fixed;
   overflow-wrap: break-word;
 }
-
+ 
 /* Foco visível para quem navega pelo teclado */
 :focus-visible {
   outline: 2px solid var(--areia);
   outline-offset: 2px;
 }
-
+ 
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
   }
 }
-
+ 
 /* ============================================
    3. CABEÇALHO
    ============================================ */
@@ -64,7 +86,7 @@ header {
     -45deg, var(--alerta) 0 12px, var(--selva-900) 12px 24px
   ) 1;
 }
-
+ 
 h1 {
   margin: 0.5rem 0;
   font-family: var(--fonte-destaque);
@@ -72,7 +94,7 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-
+ 
 .selo {
   display: inline-block;
   padding: 0.1rem 0.6rem;
@@ -82,7 +104,7 @@ h1 {
   font-weight: bold;
   transform: rotate(-4deg);
 }
-
+ 
 /* ============================================
    4. INTRODUÇÃO
    ============================================ */
@@ -90,7 +112,7 @@ h1 {
   max-width: 65ch;          /* linhas mais curtas são mais fáceis de ler */
   margin: 0 0 1rem;
 }
-
+ 
 .link-materia {
   display: inline-block;
   padding: 0.6rem 0.9rem;
@@ -104,17 +126,17 @@ h1 {
   text-decoration: none;
   transition: background 0.15s, color 0.15s;
 }
-
+ 
 .link-materia::after {
   content: " ↗";
 }
-
+ 
 .link-materia:hover,
 .link-materia:focus-visible {
   background: var(--alerta);
   color: var(--selva-900);
 }
-
+ 
 /* ============================================
    5. PROGRESSO E PESSOAS
    ============================================ */
@@ -126,14 +148,14 @@ h1 {
   margin-bottom: 1rem;
   background: var(--selva-900);
 }
-
+ 
 #progresso-texto {
   margin: 0 0 0.4rem;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--texto-suave);
 }
-
+ 
 progress {
   -webkit-appearance: none;   /* iOS exige isso para aplicar o estilo */
   appearance: none;
@@ -144,7 +166,7 @@ progress {
   overflow: hidden;
   background: var(--selva-800);   /* trilho no Firefox */
 }
-
+ 
 /* Chrome, Edge, Safari */
 progress::-webkit-progress-bar {
   background: var(--selva-800);
@@ -153,23 +175,23 @@ progress::-webkit-progress-value {
   background: var(--alerta);
   transition: width 0.3s;
 }
-
+ 
 /* Firefox */
 progress::-moz-progress-bar {
   background: var(--alerta);
 }
-
+ 
 .pessoas {
   margin-bottom: 1rem;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--texto-suave);
 }
-
+ 
 .pessoas:hover {
   background: transparent;
 }
-
+ 
 .pessoas input {
   width: 4.5rem;
   padding: 0.5rem;
@@ -179,7 +201,7 @@ progress::-moz-progress-bar {
   border: 2px solid var(--selva-600);
   border-radius: 6px;
 }
-
+ 
 /* ============================================
    6. CARTÕES DAS CATEGORIAS
    ============================================ */
@@ -191,12 +213,15 @@ section {
   border-left: 6px solid var(--musgo);
   border-radius: var(--raio);
 }
-
+ 
 .intro {
   border-left-color: var(--areia);
 }
-
+ 
 h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin: 0 0 0.5rem;
   font-family: var(--fonte-destaque);
   font-size: 1rem;
@@ -204,12 +229,7 @@ h2 {
   letter-spacing: 0.1em;
   color: var(--areia);
 }
-
-h2::before {
-  content: "▸ ";
-  color: var(--musgo);
-}
-
+ 
 /* ============================================
    7. ITENS DO CHECKLIST
    ============================================ */
@@ -222,26 +242,26 @@ label {
   cursor: pointer;
   transition: background 0.15s;
 }
-
+ 
 /* Hover só em dispositivos que têm mouse */
 @media (hover: hover) {
   label:hover {
     background: rgba(163, 193, 134, 0.12);
   }
 }
-
+ 
 input[type="checkbox"] {
   flex-shrink: 0;              /* não deixa o checkbox ser espremido */
   width: 1.5rem;
   height: 1.5rem;
   accent-color: var(--alerta);
 }
-
+ 
 label:has(input:checked) {
   color: var(--musgo);
   text-decoration: line-through;
 }
-
+ 
 /* quantidade ao lado do item */
 .detalhe {
   margin-left: auto;
@@ -249,7 +269,7 @@ label:has(input:checked) {
   color: var(--alerta);
   white-space: nowrap;
 }
-
+ 
 /* ============================================
    8. IDEIAS (bloco que abre e fecha)
    ============================================ */
@@ -257,28 +277,117 @@ label:has(input:checked) {
   margin: 0 0 0.5rem 2.6rem;   /* alinha com o texto do item */
   font-size: 0.95rem;
 }
-
+ 
 .ideias summary {
   padding: 0.75rem 0;
   cursor: pointer;
   font-weight: 600;
   color: var(--alerta);
 }
-
+ 
 .ideias ul {
   margin: 0.5rem 0;
   padding-left: 1.2rem;
 }
-
+ 
 .ideias-nota {
   padding-left: 0.6rem;
   font-size: 0.8rem;
   color: var(--texto-suave);
   border-left: 3px solid var(--alerta);
 }
-
+ 
 /* ============================================
-   9. RODAPÉ
+   9. ÍCONES, CONTADORES E DICAS
+   ============================================ */
+.icone {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+ 
+.contagem {
+  margin-left: auto;
+  padding: 0.15rem 0.6rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--texto-suave);
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+}
+ 
+/* categoria completa */
+section.completa {
+  border-left-color: var(--alerta);
+}
+ 
+section.completa .contagem {
+  color: var(--selva-900);
+  background: var(--alerta);
+}
+ 
+.dica {
+  margin: 0 0 0.5rem 2.6rem;   /* alinha com o texto do item */
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+ 
+/* ============================================
+   10. TELEFONES DE EMERGÊNCIA
+   ============================================ */
+.emergencia {
+  margin-top: 1.5rem;
+  border-left-color: var(--alerta);
+}
+ 
+.telefones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ 
+.telefones a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 4rem;            /* área de toque confortável */
+  padding: 0.5rem;
+  color: var(--texto);
+  text-align: center;
+  text-decoration: none;
+  background: var(--selva-900);
+  border: 2px solid var(--selva-600);
+  border-radius: 8px;
+}
+ 
+.telefones .numero {
+  font-family: var(--fonte-destaque);
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 1.1;
+  color: var(--alerta);
+}
+ 
+@media (hover: hover) {
+  .telefones a:hover {
+    border-color: var(--alerta);
+  }
+}
+ 
+.emergencia .nota {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+ 
+/* ============================================
+   11. RODAPÉ
    ============================================ */
 footer {
   margin-top: 2rem;
@@ -287,60 +396,67 @@ footer {
   font-size: 0.85rem;
   color: var(--texto-suave);
 }
-
+ 
 footer .aviso {
   margin: 0 0 1.5rem;
   padding-left: 0.6rem;
   border-left: 3px solid var(--alerta);
 }
-
+ 
 footer a {
   color: var(--areia);
   text-underline-offset: 3px;
 }
-
+ 
 footer ul {
   margin: 0.5rem 0 1rem;
   padding-left: 1.2rem;
 }
-
+ 
 footer li {
   margin-bottom: 0.4rem;
 }
-
+ 
 /* ============================================
-   10. RESPONSIVIDADE
+   12. RESPONSIVIDADE
    ============================================ */
-
+ 
 /* Celulares */
 @media (max-width: 480px) {
   body {
     padding: 0.75rem;
   }
-
+ 
   section {
     padding: 0.75rem;
   }
-
+ 
   .link-materia {
     display: block;
     text-align: center;
   }
 }
-
+ 
+/* Telefones em quatro colunas */
+@media (min-width: 600px) {
+  .telefones {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+ 
 /* Telas grandes: checklist em duas colunas */
 @media (min-width: 900px) {
   body {
     max-width: 960px;
   }
-
+ 
   main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
     align-items: start;
   }
-
+ 
   main section {
     margin-bottom: 0;
   }
