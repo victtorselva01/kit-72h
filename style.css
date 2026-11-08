@@ -344,3 +344,7 @@ label:hover {
     text-align: center;
   }
 }
+
+footer .aviso {
+  margin: 0 0 1.5rem;
+}
