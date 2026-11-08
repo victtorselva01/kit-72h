@@ -1,15 +1,30 @@
-/* 1. PALETA: definida uma vez, usada em todo o arquivo */
+/* ============================================
+   1. PALETA E VARIÁVEIS
+   O laranja (--alerta) fica reservado para ações e
+   informações-chave. Textos e links secundários usam areia.
+   ============================================ */
 :root {
-  --selva-900: #102418;   /* fundo da página */
-  --selva-800: #1a3524;   /* fundo dos cartões */
-  --selva-600: #3f6b4a;   /* bordas */
-  --musgo: #7f9c63;       /* detalhes e itens concluídos */
+  color-scheme: dark;
+
+  --selva-900: #0f2217;   /* fundo da página */
+  --selva-800: #1b3a28;   /* fundo dos cartões */
+  --selva-600: #3a6b4a;   /* bordas */
+  --musgo: #a3c186;       /* detalhes e itens concluídos */
+  --areia: #ece3cc;       /* títulos e links secundários */
   --alerta: #e0862b;      /* laranja de sinalização */
-  --texto: #e9efe3;
+  --texto: #eef3e8;
+  --texto-suave: #cfdcc3;
   --raio: 10px;
+  --fonte-destaque: "Courier New", ui-monospace, monospace;
 }
 
-/* 2. BASE */
+/* ============================================
+   2. BASE
+   ============================================ */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: system-ui, sans-serif;
   max-width: 640px;
@@ -20,12 +35,27 @@ body {
   background-color: var(--selva-900);
   /* manchas suaves que lembram folhagem, sem precisar de imagem */
   background-image:
-    radial-gradient(circle at 15% 10%, rgba(127, 156, 99, 0.15), transparent 40%),
-    radial-gradient(circle at 85% 60%, rgba(63, 107, 74, 0.25), transparent 45%);
+    radial-gradient(circle at 15% 10%, rgba(163, 193, 134, 0.14), transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(58, 107, 74, 0.25), transparent 45%);
   background-attachment: fixed;
+  overflow-wrap: break-word;
 }
 
-/* 3. CABEÇALHO com faixa de alerta */
+/* Foco visível para quem navega pelo teclado */
+:focus-visible {
+  outline: 2px solid var(--areia);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   3. CABEÇALHO
+   ============================================ */
 header {
   padding-bottom: 1rem;
   margin-bottom: 1.5rem;
@@ -36,10 +66,11 @@ header {
 }
 
 h1 {
-  font-family: "Courier New", ui-monospace, monospace;
+  margin: 0.5rem 0;
+  font-family: var(--fonte-destaque);
+  font-size: clamp(1.4rem, 6vw, 2rem);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: 0.5rem 0;
 }
 
 .selo {
@@ -47,171 +78,26 @@ h1 {
   padding: 0.1rem 0.6rem;
   border: 2px dashed var(--alerta);
   color: var(--alerta);
-  font-family: "Courier New", ui-monospace, monospace;
+  font-family: var(--fonte-destaque);
   font-weight: bold;
   transform: rotate(-4deg);
 }
 
-.aviso {
-  font-size: 0.85rem;
-  color: #b9c7ae;
-  border-left: 3px solid var(--alerta);
-  padding-left: 0.6rem;
-}
-
-/* 4. CARTÕES DAS CATEGORIAS */
-section {
-  background: var(--selva-800);
-  border: 1px solid var(--selva-600);
-  border-left: 6px solid var(--musgo);
-  border-radius: var(--raio);
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1rem;
-  font-family: "Courier New", ui-monospace, monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--musgo);
-}
-
-h2::before {
-  content: "▸ ";
-  color: var(--alerta);
-}
-
-/* 5. ITENS DO CHECKLIST */
-label {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 0.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-label:hover {
-  background: rgba(127, 156, 99, 0.12);
-}
-
-input[type="checkbox"] {
-  width: 1.25rem;
-  height: 1.25rem;
-  accent-color: var(--alerta);
-}
-
-label:has(input:checked) {
-  color: var(--musgo);
-  text-decoration: line-through;
-}
-
-/* PROGRESSO */
-.progresso {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: var(--selva-900);
-  padding: 0.5rem 0 0.75rem;
-  margin-bottom: 1rem;
-}
-
-#progresso-texto {
-  margin: 0 0 0.4rem;
-  font-family: "Courier New", ui-monospace, monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--musgo);
-}
-
-progress {
-  width: 100%;
-  height: 1rem;
-  border: 0;
-  border-radius: var(--raio);
-  overflow: hidden;
-  accent-color: var(--alerta);   /* fallback */
-}
-
-/* Chrome, Edge, Safari */
-progress::-webkit-progress-bar {
-  background: var(--selva-800);
-}
-progress::-webkit-progress-value {
-  background: var(--alerta);
-  transition: width 0.3s;
-}
-
-/* Firefox */
-progress::-moz-progress-bar {
-  background: var(--alerta);
-}
-
-/* PESSOAS */
-.pessoas {
-  font-family: "Courier New", ui-monospace, monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--musgo);
-  margin-bottom: 1rem;
-}
-
-.pessoas input {
-  width: 4.5rem;
-  padding: 0.4rem;
-  font-size: 1rem;
-  color: var(--texto);
-  background: var(--selva-800);
-  border: 2px solid var(--selva-600);
-  border-radius: 6px;
-}
-
-.pessoas input:focus {
-  outline: 2px solid var(--alerta);
-  outline-offset: 2px;
-}
-
-/* quantidade ao lado do item */
-.detalhe {
-  margin-left: auto;
-  font-family: "Courier New", ui-monospace, monospace;
-  font-weight: bold;
-  color: var(--alerta);
-  white-space: nowrap;
-}
-
-/* RODAPÉ */
-footer {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px dashed var(--selva-600);
-  font-size: 0.8rem;
-  color: #b9c7ae;
-}
-
-footer a {
-  color: var(--alerta);
-}
-
-/* INTRODUÇÃO */
-.intro {
-  border-left-color: var(--alerta);
-}
-
+/* ============================================
+   4. INTRODUÇÃO
+   ============================================ */
 .intro p {
+  max-width: 65ch;          /* linhas mais curtas são mais fáceis de ler */
   margin: 0 0 1rem;
 }
 
 .link-materia {
   display: inline-block;
-  padding: 0.5rem 0.9rem;
+  padding: 0.6rem 0.9rem;
   border: 2px solid var(--alerta);
   border-radius: 6px;
   color: var(--alerta);
-  font-family: "Courier New", ui-monospace, monospace;
+  font-family: var(--fonte-destaque);
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -229,35 +115,154 @@ footer a {
   color: var(--selva-900);
 }
 
-/* LISTA DE FONTES */
-footer ul {
-  padding-left: 1.2rem;
-  margin: 0.5rem 0 1rem;
+/* ============================================
+   5. PROGRESSO E PESSOAS
+   ============================================ */
+.progresso {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0.5rem 0 0.75rem;
+  margin-bottom: 1rem;
+  background: var(--selva-900);
 }
 
-footer li {
-  margin-bottom: 0.4rem;
+#progresso-texto {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--texto-suave);
 }
 
-/* IDEIAS */
+progress {
+  -webkit-appearance: none;   /* iOS exige isso para aplicar o estilo */
+  appearance: none;
+  width: 100%;
+  height: 1rem;
+  border: 0;
+  border-radius: var(--raio);
+  overflow: hidden;
+  background: var(--selva-800);   /* trilho no Firefox */
+}
+
+/* Chrome, Edge, Safari */
+progress::-webkit-progress-bar {
+  background: var(--selva-800);
+}
+progress::-webkit-progress-value {
+  background: var(--alerta);
+  transition: width 0.3s;
+}
+
+/* Firefox */
+progress::-moz-progress-bar {
+  background: var(--alerta);
+}
+
+.pessoas {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+.pessoas:hover {
+  background: transparent;
+}
+
+.pessoas input {
+  width: 4.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--texto);
+  background: var(--selva-800);
+  border: 2px solid var(--selva-600);
+  border-radius: 6px;
+}
+
+/* ============================================
+   6. CARTÕES DAS CATEGORIAS
+   ============================================ */
+section {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--selva-800);
+  border: 1px solid var(--selva-600);
+  border-left: 6px solid var(--musgo);
+  border-radius: var(--raio);
+}
+
+.intro {
+  border-left-color: var(--areia);
+}
+
+h2 {
+  margin: 0 0 0.5rem;
+  font-family: var(--fonte-destaque);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--areia);
+}
+
+h2::before {
+  content: "▸ ";
+  color: var(--musgo);
+}
+
+/* ============================================
+   7. ITENS DO CHECKLIST
+   ============================================ */
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 0.5rem;     /* área de toque confortável */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+/* Hover só em dispositivos que têm mouse */
+@media (hover: hover) {
+  label:hover {
+    background: rgba(163, 193, 134, 0.12);
+  }
+}
+
+input[type="checkbox"] {
+  flex-shrink: 0;              /* não deixa o checkbox ser espremido */
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: var(--alerta);
+}
+
+label:has(input:checked) {
+  color: var(--musgo);
+  text-decoration: line-through;
+}
+
+/* quantidade ao lado do item */
+.detalhe {
+  margin-left: auto;
+  font-weight: bold;
+  color: var(--alerta);
+  white-space: nowrap;
+}
+
+/* ============================================
+   8. IDEIAS (bloco que abre e fecha)
+   ============================================ */
 .ideias {
-  margin: 0 0 0.5rem 2.4rem;
+  margin: 0 0 0.5rem 2.6rem;   /* alinha com o texto do item */
   font-size: 0.95rem;
 }
 
 .ideias summary {
+  padding: 0.75rem 0;
   cursor: pointer;
-  padding: 0.25rem 0;
+  font-weight: 600;
   color: var(--alerta);
-  font-family: "Courier New", ui-monospace, monospace;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.ideias summary:focus-visible {
-  outline: 2px solid var(--alerta);
-  outline-offset: 2px;
 }
 
 .ideias ul {
@@ -266,70 +271,48 @@ footer li {
 }
 
 .ideias-nota {
-  font-size: 0.8rem;
-  color: #b9c7ae;
-  border-left: 3px solid var(--alerta);
   padding-left: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  border-left: 3px solid var(--alerta);
 }
 
-/* ===== AJUSTES PARA CELULAR ===== */
-
-:root {
-  --texto-suave: #c5d6b8;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  overflow-wrap: break-word;
-}
-
-/* Título que se adapta à largura da tela */
-h1 {
-  font-size: clamp(1.4rem, 6vw, 2rem);
-}
-
-/* Contraste melhor nos textos pequenos */
-#progresso-texto,
-.pessoas {
+/* ============================================
+   9. RODAPÉ
+   ============================================ */
+footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--selva-600);
+  font-size: 0.85rem;
   color: var(--texto-suave);
 }
 
-/* iOS exige isso para aplicar o estilo da barra */
-progress {
-  -webkit-appearance: none;
-  appearance: none;
+footer .aviso {
+  margin: 0 0 1.5rem;
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--alerta);
 }
 
-/* Áreas de toque maiores (o recomendado é cerca de 44px) */
-label {
-  padding: 0.75rem 0.5rem;
+footer a {
+  color: var(--areia);
+  text-underline-offset: 3px;
 }
 
-input[type="checkbox"] {
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;   /* não deixa o checkbox ser espremido por textos longos */
+footer ul {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.2rem;
 }
 
-.ideias summary {
-  padding: 0.75rem 0;
+footer li {
+  margin-bottom: 0.4rem;
 }
 
-/* Hover só em dispositivos que têm mouse */
-label:hover {
-  background: transparent;
-}
+/* ============================================
+   10. RESPONSIVIDADE
+   ============================================ */
 
-@media (hover: hover) {
-  label:hover {
-    background: rgba(127, 156, 99, 0.12);
-  }
-}
-
-/* Telas pequenas */
+/* Celulares */
 @media (max-width: 480px) {
   body {
     padding: 0.75rem;
@@ -345,6 +328,20 @@ label:hover {
   }
 }
 
-footer .aviso {
-  margin: 0 0 1.5rem;
+/* Telas grandes: checklist em duas colunas */
+@media (min-width: 900px) {
+  body {
+    max-width: 960px;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  main section {
+    margin-bottom: 0;
+  }
 }
