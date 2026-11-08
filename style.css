@@ -149,3 +149,49 @@ progress::-webkit-progress-value {
 progress::-moz-progress-bar {
   background: var(--alerta);
 }
+
+/* PESSOAS */
+.pessoas {
+  font-family: "Courier New", ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--musgo);
+  margin-bottom: 1rem;
+}
+
+.pessoas input {
+  width: 4.5rem;
+  padding: 0.4rem;
+  font-size: 1rem;
+  color: var(--texto);
+  background: var(--selva-800);
+  border: 2px solid var(--selva-600);
+  border-radius: 6px;
+}
+
+.pessoas input:focus {
+  outline: 2px solid var(--alerta);
+  outline-offset: 2px;
+}
+
+/* quantidade ao lado do item */
+.detalhe {
+  margin-left: auto;
+  font-family: "Courier New", ui-monospace, monospace;
+  font-weight: bold;
+  color: var(--alerta);
+  white-space: nowrap;
+}
+
+/* RODAPÉ */
+footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--selva-600);
+  font-size: 0.8rem;
+  color: #b9c7ae;
+}
+
+footer a {
+  color: var(--alerta);
+}
