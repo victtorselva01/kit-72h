@@ -1,14 +1,35 @@
 // ============================================
 // 1. DADOS
-// porPessoa é OPCIONAL: só existe quando há fonte para o número.
-// Água: 2 litros por pessoa por dia x 3 dias = 6 litros (Defesa Civil Nacional)
+// - id: fixo, nunca mude depois de publicar
+// - porPessoa: opcional, só onde há fonte para o número
+//   (água: 2 litros por pessoa por dia x 3 dias = 6 litros)
+// - ideias: opcional, sugestões do site (não oficiais)
 // ============================================
 const categorias = [
   {
     nome: "Água e alimentos",
     itens: [
-      { id: "agua", texto: "Água potável", porPessoa: { quantidade: 6, unidade: "litros" } },
-      { id: "alimentos", texto: "Alimentos não perecíveis (frutas secas, barras de cereais, biscoitos, enlatados)" },
+      {
+        id: "agua",
+        texto: "Água potável",
+        porPessoa: { quantidade: 6, unidade: "litros" }
+      },
+      {
+        id: "alimentos",
+        texto: "Alimentos não perecíveis (frutas secas, barras de cereais, biscoitos, enlatados)",
+        ideias: {
+          lista: [
+            "Atum ou sardinha em lata, de preferência com abertura fácil",
+            "Feijão, milho ou grão-de-bico em lata",
+            "Pasta de amendoim e castanhas",
+            "Bolachas de água e sal",
+            "Goiabada ou geleia",
+            "Leite longa vida e suco em caixinha",
+            "Barras de cereais e frutas secas"
+          ],
+          nota: "Sugestões do site, que não fazem parte da lista oficial da Defesa Civil. Prefira itens que não precisem de geladeira nem de cozimento e considere alergias, restrições alimentares e as necessidades de bebês e idosos."
+        }
+      },
       { id: "abridor", texto: "Abridor de latas" }
     ]
   },
@@ -38,6 +59,7 @@ const categorias = [
   }
 ];
 
+// Lista "achatada" com todos os itens, sem separar por categoria
 const todosOsItens = categorias.flatMap(function (categoria) {
   return categoria.itens;
 });
@@ -54,7 +76,7 @@ function carregar(chave, padrao) {
     const bruto = localStorage.getItem(chave);
     return bruto === null ? padrao : JSON.parse(bruto);
   } catch (erro) {
-    return padrao;
+    return padrao; // dado corrompido ou storage indisponível
   }
 }
 
@@ -68,6 +90,7 @@ function salvar(chave, valor) {
 
 // ============================================
 // 3. PROGRESSO
+// O total é calculado a partir do estado, nunca guardado separadamente
 // ============================================
 function atualizarProgresso(progresso) {
   const texto = document.getElementById("progresso-texto");
@@ -89,8 +112,8 @@ function atualizarProgresso(progresso) {
 // ============================================
 // 4. QUANTIDADES POR PESSOA
 // ============================================
-// Guardamos referências aos elementos que mostram quantidades,
-// para atualizá-los sem refazer a página inteira.
+// Referências aos elementos que mostram quantidades,
+// para atualizá-los sem refazer a página inteira
 const quantidades = [];
 
 function normalizarPessoas(valor) {
@@ -120,14 +143,41 @@ function configurarPessoas() {
     salvar(CHAVE_PESSOAS, pessoas);
   });
 
-  // "change": dispara ao sair do campo; aqui corrigimos o que aparece escrito
+  // "change": dispara ao sair do campo; corrige o valor exibido
   campo.addEventListener("change", function () {
     campo.value = pessoas;
   });
 }
 
 // ============================================
-// 5. RENDERIZAÇÃO
+// 5. IDEIAS (bloco que abre e fecha, sem JavaScript de interação)
+// ============================================
+function criarIdeias(item) {
+  const detalhes = document.createElement("details");
+  detalhes.className = "ideias";
+
+  const resumo = document.createElement("summary");
+  resumo.textContent = "Ideias para este item";
+  detalhes.appendChild(resumo);
+
+  const lista = document.createElement("ul");
+  item.ideias.lista.forEach(function (ideia) {
+    const li = document.createElement("li");
+    li.textContent = ideia;
+    lista.appendChild(li);
+  });
+  detalhes.appendChild(lista);
+
+  const nota = document.createElement("p");
+  nota.className = "ideias-nota";
+  nota.textContent = item.ideias.nota;
+  detalhes.appendChild(nota);
+
+  return detalhes;
+}
+
+// ============================================
+// 6. RENDERIZAÇÃO
 // ============================================
 function renderizar() {
   const container = document.getElementById("checklist");
@@ -167,13 +217,23 @@ function renderizar() {
       }
 
       secao.appendChild(rotulo);
+
+      // As ideias ficam FORA do label, para não acionar o checkbox
+      if (item.ideias) {
+        secao.appendChild(criarIdeias(item));
+      }
     });
 
     container.appendChild(secao);
   });
 
-  atualizarProgresso(progresso);
+  atualizarProgresso(progresso); // mostra o valor certo ao abrir a página
 }
 
+// ============================================
+// 7. INICIALIZAÇÃO
+// A ordem importa: primeiro renderizar (cria os elementos),
+// depois configurar as pessoas (atualiza as quantidades)
+// ============================================
 renderizar();
 configurarPessoas();

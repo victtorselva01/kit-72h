@@ -42,6 +42,7 @@ I wanted to turn that guidance into something practical: a simple, interactive c
 - **Intro text and source links** so users can read the original coverage and verify the information.
 - **Themed, responsive design** with a jungle-green, survival-inspired look that works on small screens.
 - **Works offline-friendly and lightweight**: a single page, no external dependencies, no network requests after load.
+- **Food ideas.** An expandable section with non-perishable food suggestions, clearly labeled as the site's own suggestions rather than official guidance.
 
 ## Tech stack
 

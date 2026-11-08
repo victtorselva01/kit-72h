@@ -238,3 +238,36 @@ footer ul {
 footer li {
   margin-bottom: 0.4rem;
 }
+
+/* IDEIAS */
+.ideias {
+  margin: 0 0 0.5rem 2.4rem;
+  font-size: 0.95rem;
+}
+
+.ideias summary {
+  cursor: pointer;
+  padding: 0.25rem 0;
+  color: var(--alerta);
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ideias summary:focus-visible {
+  outline: 2px solid var(--alerta);
+  outline-offset: 2px;
+}
+
+.ideias ul {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.ideias-nota {
+  font-size: 0.8rem;
+  color: #b9c7ae;
+  border-left: 3px solid var(--alerta);
+  padding-left: 0.6rem;
+}
