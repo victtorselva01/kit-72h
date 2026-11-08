@@ -6,7 +6,7 @@ Built with plain HTML, CSS and JavaScript. No frameworks, no build step, no back
 
    ![Screenshot of the 72-Hour Emergency Kit Checklist](docs/screenshot.png)
 
-**Live demo:** _add your GitHub Pages link here after deploying_
+**Live demo:** [victtorselva01.github.io/kit-72h](https://victtorselva01.github.io/kit-72h/)
 
 ---
 
