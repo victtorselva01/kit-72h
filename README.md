@@ -156,6 +156,10 @@ This is an **independent project and is not affiliated with or endorsed by any g
 - National Civil Defense on Instagram: [@defesacivilbra](https://www.instagram.com/defesacivilbra/)
 - Press coverage: [Defesa Civil explica recomendação de kit de emergência para 72 horas (Correio Braziliense)](https://www.correiobraziliense.com.br/brasil/2026/11/7534982-defesa-civil-explica-recomendacao-de-kit-de-emergencia-para-72-horas.html)
 
+## Quality
+
+Lighthouse scores (mobile): Performance 84, Accessibility 100, Best Practices 100, SEO 100.
+
 ## Author
 
 **Victor**
